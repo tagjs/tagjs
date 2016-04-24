@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<body>
+		<input type = "text" app-in = "greeting" />
+		<span>Hello </span>
+		<span app-out = "greeting"></span>!
+		<div app-out = "example"></div>
+		<p format="letter:upper">my name is Mars</p>
+		<br />
+		<p format="letter:lower">MY NAME IS Mars</p>
+		<br />
+		<p format="letter:bold">my name is Mars</p>
+		<br />
+		<p format="letter:italic">my name is Mars</p>
+		<br />
+		<p format="currency:dollar">500</p>
+		<br />			
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					$hnd.example.set("Hello developer");
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
