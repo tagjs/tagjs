@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<body>
+		<input type = "text" app-in = "name" />
+		<button app-click = "namebtn">Click</button>
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					$hnd.namebtn.onclick(function() {
+						$hnd.name.set("Hello !!!");
+					});
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
