@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>note js Application</title>
+		<script src = "../note.js"></script>	
+	</head>
+	<body>
+		<input type = "text" app-in = "greeting" />
+		<span>Hello </span>
+		<span app-out = "greeting"></span>!
+		<div app-out = "example"></div> 
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					$hnd.example.set("Hello developer");
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
