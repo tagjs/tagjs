@@ -87,7 +87,7 @@ var app = (function(){
 		}
 	};
 	
-	this.title = function(caption)
+	this.title = function(caption) // Title function for document
 	{
 		document.title = caption;
 	};
