@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+		<p>Hello <span><{ fnameStudent }></span> <span><{ lnameStudent }></span></p>
+        <p>Expense on Books : <span><{ costqmuluantity }></span>$</p>
+        <p>Roll No: <span><{ rollStudent }></span></p>
+        <p>Marks(Math): <span><{ marks }></span></p>
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					$hnd.fnameStudent.set("John");
+					$hnd.lnameStudent.set("Mars");
+					var quantity = 1;
+					var cost = 30;
+					var math = task(function(){
+					this.mul = function(x,y){
+						return x * y;
+						};
+					});
+					$hnd.costqmuluantity.set(math.mul(cost, quantity));
+					$hnd.rollStudent.set("205");
+					$hnd.marks.set("43");	
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>

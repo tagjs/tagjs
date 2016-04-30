@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+		<p>Enter your Name: <input type = "text" tag-in = "name"></p>
+		<p>Hello <span><{ name }></span>!</p>
+		<p>List of Countries with locale:</p>
+		<datacontiner type="list" name="countries">
+			<datalist>locale</datalist>
+			<datalist>name</datalist>
+		</datacontiner>		
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					datacontiner("countries",0,
+					[
+					{locale:"locale: en-US",
+					name:"***Country: United States"},
+					{locale:"locale: en-GB",
+					name:"***Country: United Kingdom"},
+					{locale:"locale: en-FR",
+					name:"***Country: France"}
+					]);			
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>

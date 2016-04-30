@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+			Enter first name: <input type = "text" tag-in = "firstName">
+			<br>
+			<br>
+			Enter last name: <input type = "text" tag-in = "lastName" >
+			<br>
+			<p>You are entering: <span><{ firstName }></span> <span><{ lastName }></span></p>
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function);
+					$hnd.firstName.set("Jack");
+					$hnd.lastName.set("Mars");
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>

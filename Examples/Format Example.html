@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+		<img tag-img = "univ" width = "100px" height = "80px" />
+         <table border = "0">
+            <tr>
+               <td>Enter first name:</td>
+               <td><input type = "text" tag-in = "firstName"></td>
+            </tr>
+            
+            <tr>
+               <td>Enter last name: </td>
+               <td><input type = "text" tag-in = "lastName"></td>
+            </tr>
+            
+            <tr>
+               <td>Enter fees: </td>
+               <td><input type = "text" tag-in = "fee"></td>
+            </tr>
+         </table>
+         <br/>
+         
+         <table border = "0">
+            <tr>
+               <td>Name in Upper Case: </td><td format = "letter:upper"><{ fullName }></td>
+            </tr>
+         
+            <tr>
+               <td>Name in Lower Case: </td><td format = "letter:lower"><{ fullName }></td>
+            </tr>
+         
+            <tr>
+               <td>fees: </td><td format = "currency:dollar"><{ fee }></td>
+            </tr>
+				
+            <tr>
+               <td>Subject:</td>
+
+               <td>
+				  <datacontiner type="list" name="subjects">
+					<datalist>subjectname</datalist>
+					<datalist>subjectmarks</datalist>
+			      </datacontiner>				  
+               </td>
+            </tr>
+         </table>	
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					$hnd.univ.set("./university.png");
+					$hnd.firstName.set("John");
+					$hnd.lastName.set("Mars");
+					$hnd.fee.set("500");
+					$hnd.fullName.set("John Mars");
+					datacontiner("subjects",0,
+					[
+					{subjectname:"Physics",
+					subjectmarks:"70"},
+					{subjectname:"Chemistry",
+					subjectmarks:"80"},
+					{subjectname:"Math",
+					subjectmarks:"65"}					
+					]);
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
