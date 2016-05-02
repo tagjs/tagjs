@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+		<div class="container">
+		  <h2>Guess the Number !</h2>
+		  <p class="well lead">Guess the computer generated random number between 1 and 1000.</p>
+		  <label>Your Guess: </label><input type="number" tag-in="guess"/>
+		  <button tag-click="verifyGuess" class="btn btn-primary btn-sm">Verify</button>
+		  <button tag-click="initializeGame" class="btn btn-warning btn-sm">Restart</button>
+		  <p>
+			<p class="alert alert-success"><{ deviation }></p>
+		  </p>
+		  <p class="text-info">No of guesses : <span class="badge"><{ noOfTries }></span><p>
+		</div>		
+		<!-- Controller -->
+		<script>
+			function GuessTheNumber(){ // User-defined function
+				run(function($hnd){ //Start point function
+					
+					var orginal = 0;
+					$hnd.verifyGuess.onclick(function(){
+						if($hnd.guess.get() == orginal)
+						{
+							$hnd.deviation.set("Success");
+						}
+						else
+						{
+							$hnd.deviation.set(orginal - $hnd.guess.get());
+						}						
+						var nof = parseInt($hnd.noOfTries.get());
+						$hnd.noOfTries.set(nof+1);
+
+					});
+					$hnd.initializeGame.onclick(function(){
+						$hnd.noOfTries.set(0);
+						orginal = Math.floor((Math.random() * 1000) + 1);
+						$hnd.guess.set(null);
+						$hnd.deviation.set(null);						
+					});
+					function initializeGame(){
+						$hnd.noOfTries.set(0);
+						orginal = Math.floor((Math.random() * 1000) + 1);					
+					};
+					initializeGame();					
+				});
+			};
+			execute(GuessTheNumber); // Call application in load page
+		</script>
+	</body>
+</html>
