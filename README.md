@@ -6,5 +6,4 @@ New examples:<br>
 3- Example 3 (Firstname) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Firstname%20Lastname.html">Show</a><br>
 4- Example 4 (Format) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Format%20Example.html">Show</a><br>
 5- Example 5 (List) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/List%20Example.html">Show</a><br>
-6- Example 6 (List) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/List%20Example.html">Show</a><br>
-7- Example 7 (Guess the Number !) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Guess%20the%20Number.html">Show</a><br>
+6- Example 6 (Guess the Number !) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Guess%20the%20Number.html">Show</a><br>
