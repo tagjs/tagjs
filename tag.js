@@ -258,7 +258,7 @@ var app = (function(){
 			var i;
 			for(var i=0, max=all.length; i < max; i++)
 			{
-				if (all[i].hasAttribute("app-continer"))
+				if (all[i].hasAttribute("tag-continer"))
 				{
 					all[i].innerHTML = all[i].innerHTML.replace(all[i].innerHTML, obj[0].define);
 				}
@@ -271,7 +271,7 @@ var app = (function(){
 			var i;
 			for(var i=0, max=all.length; i < max; i++)
 			{
-				if (all[i].hasAttribute("app-continer"))
+				if (all[i].hasAttribute("tag-continer"))
 				{
 					all[i].innerHTML = all[i].innerHTML.replace(all[i].innerHTML, obj.define);
 				}
@@ -634,7 +634,7 @@ window.onpopstate = function(event) {
 		{
 			for(var j=0, max=all.length; j < max; j++)
 			{
-				if (all[j].hasAttribute("app-continer"))
+				if (all[j].hasAttribute("tag-continer"))
 				{
 					route("",setbj[k]);
 				}
