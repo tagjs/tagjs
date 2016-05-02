@@ -472,6 +472,7 @@ var app = (function(){
 					{
 						if(all[k].getAttribute('name') == name)
 						{
+							all[k].innerHTML = "";
 							all[k].innerHTML +=str;
 						}
 					}
