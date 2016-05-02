@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+		<h3>The Moon</h3>
+		<datacontiner type="list" name="moonside">
+			<datalist>name</datalist>
+			<datalist>image</datalist>
+		</datacontiner>		
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					datacontiner("moonside",0,
+					[
+					{name:"<p>Near side of the Moon</p>",
+					image:"<img tag-img='Nearside' />"},
+					{name:"<p>Far side of the Moon</p>",
+					image:"<img tag-img='Farside' />"},
+					{name:"<p>Lunar north pole</p>",
+					image:"<img tag-img='Northpole' />"},
+					{name:"<p>Lunar south pole</p>",
+					image:"<img tag-img='Southpole' />"}					
+					]);
+					
+					$hnd.Nearside.set("https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/LRO_WAC_Nearside_Mosaic.jpg/135px-LRO_WAC_Nearside_Mosaic.jpg");
+					$hnd.Farside.set("https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Moon_Farside_LRO.jpg/135px-Moon_Farside_LRO.jpg");
+					$hnd.Northpole.set("https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/LRO_WAC_North_Pole_Mosaic_%28PIA14024%29.jpg/135px-LRO_WAC_North_Pole_Mosaic_%28PIA14024%29.jpg");
+					$hnd.Southpole.set("https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/LRO_WAC_South_Pole_Mosaic.jpg/135px-LRO_WAC_South_Pole_Mosaic.jpg");
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
