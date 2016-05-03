@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>	
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+		<h2>TODO</h2>
+		Number of item: <span><{ counts }></span>
+		<br>
+		<datacontiner type="list" name="todos">
+			<datalist>todo</datalist>
+		</datacontiner>			
+		<form action="/">
+		  <input type="text" tag-in="todoText" size="30" placeholder="Enter Programming Languages" />
+		  <br>
+		  <button type="button" tag-click="addTodo">add</button>
+		</form>
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					var count = 0;
+					var todoobj = [{todo:"<span>C</span>"},{todo:"<span>C++</span>"}]
+					
+					datacontiner("todos",0,todoobj);
+					count = todoobj.length;
+					$hnd.counts.set(count);
+					
+					$hnd.addTodo.onclick(function() {
+						todoobj.push({todo:"<span>" + $hnd.todoText.get() + "</span>"});
+						datacontiner("todos",0,todoobj);
+						count++;
+						$hnd.counts.set(count);						
+						$hnd.todoText.set('');
+					});
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
