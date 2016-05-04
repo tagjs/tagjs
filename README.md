@@ -9,3 +9,4 @@ New examples:<br>
 6- Example 6 (Guess the Number !) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Guess%20the%20Number.html">Show</a><br>
 7- Example 7 (Image) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Image.html">Show</a><br>
 8- Example 8 (Todo) -> <a href="https://htmlpreview.github.io/?https://github.com/tagjs/tagjs/blob/master/Examples/Todo.html">Show</a><br>
+9- Example 9 (Nav Menu) -> <a href="https://htmlpreview.github.io/?https://github.com/tagjs/tagjs/blob/master/Examples/Nav%20menu.html">Show</a><br>
