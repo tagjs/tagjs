@@ -22,19 +22,28 @@
 			function myApp(){ // User-defined function
 				run(function($hnd){ //Start point function
 					var count = 0;
-					var todoobj = [{todo:"<span>C</span>"},{todo:"<span>C++</span>"}]
+					var todoobj = [{todo:"<span>C</span>"},{todo:"<span>C++</span>"}];
 					
 					datacontiner("todos",0,todoobj);
 					count = todoobj.length;
 					$hnd.counts.set(count);
+
+					clickHandle({
+					function: 'addTodo',
+					$param: [],
+					body:function addTodo()
+					{
+						operationTodo();
+					}
+					});
 					
-					$hnd.addTodo.onclick(function() {
+					this.operationTodo = function(){
 						todoobj.push({todo:"<span>" + $hnd.todoText.get() + "</span>"});
 						datacontiner("todos",0,todoobj);
 						count++;
 						$hnd.counts.set(count);						
-						$hnd.todoText.set('');
-					});
+						$hnd.todoText.set('');						
+					};
 				});
 			};
 			execute(myApp); // Call application in load page
