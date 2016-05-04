@@ -13,7 +13,7 @@ var app = (function(){
 	
 	this.model = function(){ // Model function (view<->controller<->model)
 		var all = document.getElementsByTagName("*");
-		var i;
+		var i,j = 0;
 		var s, h;
 		var vl, cl;
 		var clktemp = [];
@@ -38,15 +38,13 @@ var app = (function(){
 			{	
 				bind();
 				s = strtemp[1];
-				vl = new value('tag-out',strtemp[1]);
+				var attout = document.createAttribute("tag-out");
+				attout.value = s;
+				all[i].setAttributeNode(attout);
+				all[i].innerText = "";
+				vl = new value('tag-out',s);
 				hnd[s] = vl;
 				
-			}
-			else if(all[i].hasAttribute('tag-click'))
-			{
-				s = all[i].getAttribute('tag-click');
-				vl = new on(s);
-				hnd[s] = vl;
 			}
 			else if(all[i].hasAttribute('tag-img'))
 			{
@@ -541,7 +539,6 @@ var app = (function(){
 			{
 				for(var i=0, max=all.length; i < max; i++)
 				{
-					var strtemp = all[i].innerText.split(' ');
 					if($type == 'tag-in')
 					{
 						if (all[i].hasAttribute('tag-in') && all[i].getAttribute('tag-in') == $id)
@@ -551,15 +548,7 @@ var app = (function(){
 					}
 					else if($type == 'tag-out')
 					{
-						if (strtemp[1] == $id)
-						{
-							var attout = document.createAttribute("tag-out");
-							attout.value = $id;
-							all[i].setAttributeNode(attout);
-							all[i].innerText = "";
-							all[i].innerText = $value;
-						}
-						else if(all[i].hasAttribute('tag-out') && all[i].getAttribute('tag-out') == $id)
+						if(all[i].hasAttribute('tag-out') && all[i].getAttribute('tag-out') == $id)
 						{
 							all[i].innerText = $value;
 						}
@@ -627,6 +616,31 @@ var app = (function(){
 		}		
 		
 	};
+	this.clickHandle = function(funcobj){
+		var j = 0
+		var all = document.getElementsByTagName("*");
+		for(var i=0, max=all.length; i < max; i++)
+		{
+			if(all[i].getAttribute('tag-click') == funcobj.function)
+			{
+				var prm = funcobj.$param[j];
+				var res = funcobj.body.toString().replace("$param", "'" + prm + "'");
+				
+				//var f = new Function("return function " + funcobj.function + "()" + "{"  + res + "}")();
+				var f = new Function("return " + res + " ")();
+				//console.log(f);
+				//all[i].setAttribute('onclick',all[i].getAttribute('tag-click') + "('" + prm + "')");
+				
+				all[i].addEventListener('click',f);
+				
+				/*all[i].onclick = function(){
+					f();
+				}*/
+				j++;
+			}
+		}
+
+	};	
 })();
 window.onpopstate = function(event) {
 	var all = document.getElementsByTagName("*");
