@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet" />
+		<link href="./style.css" rel="stylesheet" />
+	</head>
+	<!-- View -->
+	<body>
+		<h1>TagJS Sample Application</h1>
+		<a href="#" class="home" tag-click="select">Home</a>
+		<a href="#" class="about" tag-click="select">About</a>
+		<a href="#" class="contact" tag-click="select">Contact</a>
+		<br>
+		You chose <span><{ selected }></span>
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					clickHandle({
+					function: 'select',
+					$param: ['home','about','contact'],
+					body:function select()
+					{
+						var temp = $param;
+						setSelected(temp);
+					}
+					});
+					this.setSelected = function(arg){
+						$hnd.selected.set(arg);
+					}					
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
