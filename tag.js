@@ -25,7 +25,6 @@ var app = (function(){
 				s = all[i].getAttribute('tag-in');
 				vl = new value('tag-in',all[i].getAttribute('tag-in'));
 				hnd[s] = vl;
-				//all[i].setAttribute('oninput', 'window.onload()');
 				if(navigator.userAgent.indexOf("Firefox") != -1 )
 				{
 					all[i].setAttribute('oninput', 'window.onload()');
@@ -458,11 +457,12 @@ var app = (function(){
 			var m;
 			for(m=0;m<obj.length;m++)
 			{
+				str += "<li>";
 				for(nm in obj[m])
 				{
 					str += obj[m][nm] + " ";	
 				}
-				str += "<br>";
+				str += "</li>";
 			}
 			for(var k=0, max=all.length; k < max; k++)
 			{
@@ -491,7 +491,9 @@ var app = (function(){
 		}
 		else
 		{
+			str = "<ul>"
 			nochangePage();
+			str = "</ul>"
 		}
 		model();
 	};
@@ -504,9 +506,9 @@ var app = (function(){
 		{
 			for(var i=0, max=all.length; i < max; i++)
 			{
-				if (all[i].hasAttribute('app-out'))
+				if (all[i].hasAttribute('tag-out'))
 				{
-					if (all[i].getAttribute('app-out') == id)
+					if (all[i].getAttribute('tag-out') == id)
 					{
 					all[i].innerText = msg + '\n';
 					}
