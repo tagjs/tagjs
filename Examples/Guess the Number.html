@@ -25,7 +25,23 @@
 				run(function($hnd){ //Start point function
 					
 					var orginal = 0;
-					$hnd.verifyGuess.onclick(function(){
+					clickHandle({
+					function: 'verifyGuess',
+					$param: [],
+					body:function select()
+					{
+						verify();
+					}
+					});
+					clickHandle({
+					function: 'initializeGame',
+					$param: [],
+					body:function select()
+					{
+						initialize();
+					}
+					});
+					this.verify = function(){
 						if($hnd.guess.get() == orginal)
 						{
 							$hnd.deviation.set("Success");
@@ -37,13 +53,13 @@
 						var nof = parseInt($hnd.noOfTries.get());
 						$hnd.noOfTries.set(nof+1);
 
-					});
-					$hnd.initializeGame.onclick(function(){
+					};
+					this.initialize = function(){
 						$hnd.noOfTries.set(0);
 						orginal = Math.floor((Math.random() * 1000) + 1);
 						$hnd.guess.set(null);
 						$hnd.deviation.set(null);						
-					});
+					};
 					function initializeGame(){
 						$hnd.noOfTries.set(0);
 						orginal = Math.floor((Math.random() * 1000) + 1);
