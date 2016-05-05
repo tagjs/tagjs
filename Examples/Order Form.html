@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>
+		<link href="http://fonts.googleapis.com/css?family=Cookie|Open+Sans:400,700" rel="stylesheet" />
+		<link href="style.css" rel="stylesheet" />
+	</head>
+	<!-- View -->
+	<body>
+		<h1>Order Form Application</h1>
+		<form>
+
+			<h2>List of drink</h2>
+			<h3>Click on drink name</h3>
+			<div>
+				<datacontiner type="list" name="services">
+					<datalist>service</datalist>
+			    </datacontiner>
+				------------------------
+				<br>
+				Total: <span format = "currency:dollar"><{ total }></span>
+			</div>
+
+		</form>		
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					var result = 0;
+					$hnd.total.set(0);
+					datacontiner("services",0,
+					[
+					{service:`<a tag-click = "order">Water: </a>
+					<span format = "currency:dollar">100</span>`},
+					{service:`<a tag-click = "order">Milk: </a>
+					<span format = "currency:dollar">500</span>`},
+					{service:`<a tag-click = "order">Tea: </a>
+					<span format = "currency:dollar">600</span>`},
+					{service:`<a tag-click = "order">Coffee: </a>
+					<span format = "currency:dollar">700</span>`}
+					]);
+					
+					clickHandle({
+					function: 'order',
+					$param: ['Water','Milk','Tea','Coffee'],
+					body:function order()
+					{
+						var temp = $param;
+						if(temp == 'Water')
+							totalOp(100);
+						else if(temp == 'Milk')
+							totalOp(500);
+						else if(temp == 'Tea')
+							totalOp(600);
+						else if(temp == 'Coffee')
+							totalOp(700);
+					}
+					});
+					
+					this.totalOp = function(arg){
+						var inp = parseInt(arg);
+						result += inp;
+						$hnd.total.set(result);
+					};
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
