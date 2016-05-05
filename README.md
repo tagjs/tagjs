@@ -10,3 +10,4 @@ New examples:<br>
 7- Example 7 (Image) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Image.html">Show</a><br>
 8- Example 8 (Todo) -> <a href="https://htmlpreview.github.io/?https://github.com/tagjs/tagjs/blob/master/Examples/Todo.html">Show</a><br>
 9- Example 9 (Nav menu) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Nav%20menu.html">Show</a><br>
+10- Example 10 (Album) -> <a href="https://cdn.rawgit.com/tagjs/tagjs/master/Examples/Album.html">Show</a><br>
