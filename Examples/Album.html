@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<title>tag js Application</title>
+		<script src = "../tag.js"></script>
+		<style type="text/css">
+			body {
+				background: #66b3ff;
+				margin: 0;
+			}
+			.thumbnails img {
+				height: 80px;
+				border: 4px solid #0066cc;
+				padding: 1px;
+				margin: 0 10px 10px 0;
+			}
+
+			.thumbnails img:hover {
+				border: 4px solid #00ccff;
+				cursor:pointer;
+			}
+
+			.preview img {
+				border: 4px solid #0066cc;
+				padding: 1px;
+				width: 800px;
+				height: 500px;
+			}
+		</style>		
+	</head>
+	<!-- View -->
+	<body>
+		<div class = "gallery" align = "center">
+			<h1>Album Application</h1>
+					<div class = "thumbnails">
+						<datacontiner type="list" name="images">
+							<datalist>thumbnail</datalist>
+						</datacontiner>
+						<div class = 'preview' align= 'center'>
+							<img name = 'preview' tag-img = 'imgset' alt=''/>
+						</div>						
+					</div>
+		</div>
+		<!-- Controller -->
+		<script>
+			function myApp(){ // User-defined function
+				run(function($hnd){ //Start point function
+					$hnd.imgset.set('img1.jpg');
+					datacontiner("images",0,
+					[
+					{thumbnail:`<img tag-click = 'img' src = 'img1.jpg' alt = '' />
+								<img tag-click = 'img' src = 'img2.jpg' alt = '' />
+								<img tag-click = 'img' src = 'img3.jpg' alt = '' />
+								<img tag-click = 'img' src = 'img4.jpg' alt = '' />`}
+					]);
+					clickHandle({
+					function: 'img',
+					$param: ['img1','img2','img3','img4'],
+					body:function img()
+					{
+						var temp = $param;
+						if(temp == 'img1')
+							imgSelect('img1');
+						else if(temp == 'img2')
+							imgSelect('img2');
+						else if(temp == 'img3')
+							imgSelect('img3');
+						else if(temp == 'img4')
+							imgSelect('img4');
+					}
+					});
+					this.imgSelect = function(arg){
+						$hnd.imgset.set(arg+'.jpg');
+					};
+				});
+			};
+			execute(myApp); // Call application in load page
+		</script>
+	</body>
+</html>
